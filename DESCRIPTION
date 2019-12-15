@@ -1,0 +1,22 @@
+Package: motifscensus
+Type: Package
+Title: Count motifs
+Version: 0.0.0.9000
+Date: 2019-12-14
+Authors@R: c(
+  person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre"))
+  )
+Description: Count motifs for a species.
+Imports: Rcpp (>= 1.0.3)
+LinkingTo: Rcpp
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat
+NeedsCompilation: yes
+Encoding: UTF-8
+VignetteBuilder: knitr
+License: GPL (>= 2)
+BugReports: https://github.com/KevCaz/motifscensus/issues
+RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
