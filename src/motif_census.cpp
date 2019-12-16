@@ -9,12 +9,12 @@ using namespace Rcpp;
 //' @description
 //' Compute motif census
 //'
-//' @param mat a matrix of logical describing a network.
+//' @param mat a square matrix of logical describing a network.
 //'
 //' @export
 //'
 //' @return
-//' A dataframe with species as row and motifs as columns, ordered as follows:
+//' A dataframe with species as row and motifs as columns, motifs are ordered as follows:
 //'	* 1 linear chains bottom
 //'	* 2 linear chains middle
 //'	* 3 linear chains top
@@ -28,6 +28,11 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 NumericMatrix motif_census(LogicalMatrix mat) {
+
+		if (mat.nrow() != mat.ncol()) {         // log() not defined here
+				stop("`mat` is not square");
+		}
+
 
 		NumericMatrix out(mat.nrow(), 10);
 		// NB: below are how

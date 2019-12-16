@@ -8,12 +8,12 @@
 #' @description
 #' Compute motif census
 #'
-#' @param mat a matrix of logical describing a network.
+#' @param mat a square matrix of logical describing a network.
 #'
 #' @export
 #'
 #' @return
-#' A dataframe with species as row and motifs as columns, ordered as follows:
+#' A dataframe with species as row and motifs as columns, motifs are ordered as follows:
 #'	* 1 linear chains bottom
 #'	* 2 linear chains middle
 #'	* 3 linear chains top

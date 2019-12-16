@@ -4,10 +4,10 @@
 \alias{motif_census}
 \title{Compute motif census}
 \arguments{
-\item{mat}{a matrix of logical describing a network.}
+\item{mat}{a square matrix of logical describing a network.}
 }
 \value{
-A dataframe with species as row and motifs as columns, ordered as follows:
+A dataframe with species as row and motifs as columns, motifs are ordered as follows:
 \itemize{
 \item 1 linear chains bottom
 \item 2 linear chains middle
