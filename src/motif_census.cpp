@@ -40,11 +40,11 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 		// 3-4 => apparent competition => 3- bottom 4- top
 		// 5-6 => expoitative competition => 5- bottom 6- top
 		// 7-9 => omnivory => 7- bottom 8- medium -9 top
-		int i, j, k;
+		int j, k, i;
 		int nsp = mat.nrow();
 
 		// remove interaction that are bidirectionnal and cannibalism
-		for (i=  0; i < mat.nrow(); i++) {
+		for (i = 0; i < mat.nrow(); i++) {
 				mat(i,i) = false;
 				for (j = i+1; j < mat.ncol(); j++) {
 						if (mat(i,j) && mat(j, i)) {
@@ -59,10 +59,10 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 				for (j = i+1; j < nsp-1; j++) {
 						for (k = j+1; k < nsp; k++) {
 								// there are 27 possibilities
-								if (mat(i, j)) {
+								if (mat(j, i)) {
 										//
-										if (mat(j, k)) {
-												if (mat(i, k)) {
+										if (mat(k, j)) {
+												if (mat(k, i)) {
 														out(i, 9)++;
 														out(j, 8)++;
 														out(k, 7)++;
@@ -74,7 +74,7 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 														out(k, 0)++;
 												}
 										} else if (mat(k, j)) {
-												if (mat(i, k)) {
+												if (mat(k, i)) {
 														out(i, 9)++;
 														out(j, 7)++;
 														out(k, 8)++;
@@ -88,7 +88,7 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 														out(k, 6)++;
 												}
 										} else {
-												if (mat(i, k)) {
+												if (mat(k, i)) {
 														out(i, 4)++;
 														out(j, 3)++;
 														out(k, 3)++;
@@ -102,8 +102,8 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 										}
 								} else if (mat(j, i)) {
 										//
-										if (mat(j, k)) {
-												if (mat(i, k)) {
+										if (mat(k, j)) {
+												if (mat(k, i)) {
 														out(i, 8)++;
 														out(j, 9)++;
 														out(k, 7)++;
@@ -117,7 +117,7 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 														out(k, 3)++;
 												}
 										} else if (mat(k, j)) {
-												if (mat(i, k)) {
+												if (mat(k, i)) {
 														// circular
 												} else if (mat(k, i)) {
 														out(i, 7)++;
@@ -129,7 +129,7 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 														out(k, 2)++;
 												}
 										} else {
-												if (mat(i, k)) {
+												if (mat(k, i)) {
 														out(i, 1)++;
 														out(j, 2)++;
 														out(k, 0)++;
@@ -138,13 +138,12 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 														out(j, 6)++;
 														out(k, 6)++;
 												} else {
-														// not a motif
+														// no motif
 												}
 										}
 								} else {
-										//
-										if (mat(j, k)) {
-												if (mat(i, k)) {
+										if (mat(k, j)) {
+												if (mat(k, i)) {
 														out(i, 6)++;
 														out(j, 6)++;
 														out(k, 5)++;
@@ -156,7 +155,7 @@ NumericMatrix motif_census(LogicalMatrix mat) {
 														// no motif
 												}
 										} else if (mat(k, j)) {
-												if (mat(i, k)) {
+												if (mat(k, i)) {
 														out(i, 2)++;
 														out(j, 0)++;
 														out(k, 1)++;
