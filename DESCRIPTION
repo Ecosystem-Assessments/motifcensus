@@ -2,11 +2,12 @@ Package: motifscensus
 Type: Package
 Title: Count motifs
 Version: 0.0.0.9000
-Date: 2019-12-14
+Date: 2019-12-17
 Authors@R: c(
   person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre"))
   )
-Description: Count motifs for a species.
+Description: Count motifs (motif ans position within) for a directed network.
+URL: https://github.com/KevCaz/motifscensus/
 Imports: Rcpp (>= 1.0.3)
 LinkingTo: Rcpp
 Suggests:
