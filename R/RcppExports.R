@@ -3,27 +3,28 @@
 
 #' @name motif_census
 #'
-#' @title Compute motif census
+#' @title Compute motif census for a directional network.
 #'
 #' @description
-#' Compute motif census
+#' Count motifs and positions within motifs for a directional network.
 #'
-#' @param mat a square matrix of logical describing a network.
+#' @param mat a square matrix of logical describing a directional network.
 #'
 #' @export
 #'
 #' @return
-#' A dataframe with species as row and motifs as columns, motifs are ordered as follows:
-#'	* 1 linear chains bottom
-#'	* 2 linear chains middle
-#'	* 3 linear chains top
-#'	* 4 apparent compitition botton
-#'	* 5 apparent compitition top
-#'	* 6 expoitative competition bottom
-#'	* 7 expoitative competition top
-#'	* 8 omnivory bottom
-#'	* 9 omnivory middle
-#'	* 10 omnivory top
+#' A dataframe with species as rows and motifs as columns, motif positions are ordered as follows:
+#'	* 1 linear chains bottom;
+#'	* 2 linear chains middle;
+#'	* 3 linear chains top;
+#'	* 4 apparent competition botton;
+#'	* 5 apparent competition top;
+#'	* 6 exploitative competition bottom;
+#'	* 7 exploitative competition top;
+#'	* 8 omnivory bottom;
+#'	* 9 omnivory middle;
+#'	* 10 omnivory top;
+#'	* 11 circular (e.g. 1->2->3->1).
 NULL
 
 motif_census <- function(mat) {

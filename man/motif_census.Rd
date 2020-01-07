@@ -2,25 +2,26 @@
 % Please edit documentation in R/RcppExports.R
 \name{motif_census}
 \alias{motif_census}
-\title{Compute motif census}
+\title{Compute motif census for a directional network.}
 \arguments{
-\item{mat}{a square matrix of logical describing a network.}
+\item{mat}{a square matrix of logical describing a directional network.}
 }
 \value{
-A dataframe with species as row and motifs as columns, motifs are ordered as follows:
+A dataframe with species as rows and motifs as columns, motif positions are ordered as follows:
 \itemize{
-\item 1 linear chains bottom
-\item 2 linear chains middle
-\item 3 linear chains top
-\item 4 apparent compitition botton
-\item 5 apparent compitition top
-\item 6 expoitative competition bottom
-\item 7 expoitative competition top
-\item 8 omnivory bottom
-\item 9 omnivory middle
-\item 10 omnivory top
+\item 1 linear chains bottom;
+\item 2 linear chains middle;
+\item 3 linear chains top;
+\item 4 apparent competition botton;
+\item 5 apparent competition top;
+\item 6 exploitative competition bottom;
+\item 7 exploitative competition top;
+\item 8 omnivory bottom;
+\item 9 omnivory middle;
+\item 10 omnivory top;
+\item 11 circular (e.g. 1->2->3->1).
 }
 }
 \description{
-Compute motif census
+Count motifs and positions within motifs for a directional network.
 }
