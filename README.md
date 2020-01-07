@@ -2,6 +2,9 @@
 [![Actions Status](https://github.com/KevCaz/motifscensus/workflows/Check%20Package/badge.svg)](https://github.com/KevCaz/motifscensus/actions)
 
 
+[`igraph`](https://igraph.org/r/) 
+
+
 ## Installation
 
 ```r
@@ -9,7 +12,9 @@ install.packages("remotes")
 install_github("KevCaz/motifscensus")
 ```
 
+
 ## Example
+
 
 ```r
 net <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
