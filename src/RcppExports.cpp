@@ -16,9 +16,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// motif_census_bidirectional
+NumericMatrix motif_census_bidirectional(LogicalMatrix mat);
+RcppExport SEXP _motifscensus_motif_census_bidirectional(SEXP matSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< LogicalMatrix >::type mat(matSEXP);
+    rcpp_result_gen = Rcpp::wrap(motif_census_bidirectional(mat));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_motifscensus_motif_census", (DL_FUNC) &_motifscensus_motif_census, 1},
+    {"_motifscensus_motif_census_bidirectional", (DL_FUNC) &_motifscensus_motif_census_bidirectional, 1},
     {NULL, NULL, 0}
 };
 

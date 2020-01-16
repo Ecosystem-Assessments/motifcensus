@@ -31,3 +31,21 @@ motif_census <- function(mat) {
     .Call('_motifscensus_motif_census', PACKAGE = 'motifscensus', mat)
 }
 
+#' @name motif_census_bidirectional
+#'
+#' @title Compute motif census for a bidirectional network.
+#'
+#' @description
+#' Count motifs and positions within motifs for a bidirectional network.
+#'
+#' @param mat a square matrix of logical describing a directional network.
+#'
+#' @references
+#' Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824
+#'
+#' @export
+#'
+motif_census_bidirectional <- function(mat) {
+    .Call('_motifscensus_motif_census_bidirectional', PACKAGE = 'motifscensus', mat)
+}
+
