@@ -209,20 +209,13 @@ NumericMatrix motif_census_uni(LogicalMatrix mat)
 							out(j, 3)++;
 							out(k, 4)++;
 						}
-						else
-						{
-							// no motif
-						}
+						// no motif otherwise (so else is droped
 					}
-					else
-					{
-						// no motif
-					}
+					// no motif otherwise (so else is droped)
 				}
 			}
 		}
 	}
-
 	return out;
 }
 

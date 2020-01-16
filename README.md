@@ -1,5 +1,6 @@
 # Motif census
 [![Actions Status](https://github.com/KevCaz/motifscensus/workflows/Check%20Package/badge.svg)](https://github.com/KevCaz/motifscensus/actions)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 ## :question: Description 
 
@@ -24,7 +25,7 @@ install_github("KevCaz/motifscensus")
 ## Example
 
 ```r
-R> library()
+R> library(motifcensus)
 R> # Networ net: k 4 -> 3 -> 1 & 4 -> 3 -> 1 & 1 <- 3 -> 2
 R> net <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
 net
@@ -34,7 +35,7 @@ net
 [3,]    1    1    0    0
 [4,]    0    0    1    0
 
-R> motifcensus::motif_census(net, unidirectional = TRUE) 
+R> motif_census(net, unidirectional = TRUE) 
 $motifs
 1 2 3 4 5 
 2 0 1 0 0 
@@ -46,7 +47,8 @@ $positions
 [3,]    0    2    0    0    0    1    0    0    0     0     0
 [4,]    2    0    0    0    0    0    0    0    0     0     0
 
-R> motifcensus::motif_census(net) 
+R> # if net is a bidirectional network
+R> motif_census(net) 
 $motifs
  1  2  3  4  5  6  7  8  9 10 11 12 13 
  1  2  0  0  0  0  0  0  0  0  0  0  0 

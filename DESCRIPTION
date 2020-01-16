@@ -1,12 +1,12 @@
 Package: motifcensus
 Type: Package
 Title: Count 3-nodes motifs for unipartite networks
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Date: 2020-01-16
 Authors@R: c(
   person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre"))
   )
-Description: Count motifs (motif ans position within) for a directed network.
+Description: Count 3-nodes motifs and positions for unipartite networks.
 URL: https://github.com/KevCaz/motifcensus/
 Imports: 
   Rcpp (>= 1.0.3),
