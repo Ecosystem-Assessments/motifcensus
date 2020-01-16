@@ -102,10 +102,8 @@ positions_motif3[1 + 62,] <- c(28, 29, 27) # i<=>k<=>j + j->i
 positions_motif3[1 + 63,] <- 30
 colnames(positions_motif3) <- c("i", "j", "k")
 
-write.csv(positions_motif3, file = "data/positions_motif3.csv", 
-    row.names = FALSE)
 
-
-positions_motif3_conv <- c(
-    rep(1:13, c(2, 3, 3, 2, 3, 2, 3, 2, 1, 3, 2, 3, 1))
-) 
+# write.csv(positions_motif3, file = "data/positions_motif3.csv", 
+#     row.names = FALSE)
+save(positions_motif3, file="data/positions_motif3.rdata", 
+    compress = "xz", version = 2)

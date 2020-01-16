@@ -6,5 +6,5 @@
 #' @keywords datasets
 #' @name positions_motif3
 #' @usage positions_motif3
-#' @format a matrix 
+#' @format a matrix of 64 rows and 3 columns
 "positions_motif3"

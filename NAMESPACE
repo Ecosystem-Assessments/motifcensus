@@ -2,4 +2,5 @@
 
 export(motif_census)
 importFrom(Rcpp,evalCpp)
-useDynLib(motifscensus)
+importFrom(utils,data)
+useDynLib(motifcensus)

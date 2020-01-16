@@ -1,5 +1,5 @@
 library(testthat)
-library(motifscensus)
+library(motifcensus)
 
-test_check("motifscensus")
+test_check("motifcensus")
 

@@ -1,4 +1,6 @@
+#' @importFrom utils data
 #' @importFrom Rcpp evalCpp
-#' @useDynLib motifscensus
-#' @name motifs_census
+#' @useDynLib motifcensus
+#' @name motif_census
 NULL
+

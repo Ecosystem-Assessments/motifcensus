@@ -5,36 +5,37 @@
 
 using namespace Rcpp;
 
-// motif_census
-NumericMatrix motif_census(LogicalMatrix mat);
-RcppExport SEXP _motifscensus_motif_census(SEXP matSEXP) {
+// motif_census_uni
+NumericMatrix motif_census_uni(LogicalMatrix mat);
+RcppExport SEXP _motifcensus_motif_census_uni(SEXP matSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< LogicalMatrix >::type mat(matSEXP);
-    rcpp_result_gen = Rcpp::wrap(motif_census(mat));
+    rcpp_result_gen = Rcpp::wrap(motif_census_uni(mat));
     return rcpp_result_gen;
 END_RCPP
 }
-// motif_census_bidirectional
-NumericMatrix motif_census_bidirectional(LogicalMatrix mat);
-RcppExport SEXP _motifscensus_motif_census_bidirectional(SEXP matSEXP) {
+// motif_census_bi
+NumericMatrix motif_census_bi(LogicalMatrix mat, IntegerMatrix ref);
+RcppExport SEXP _motifcensus_motif_census_bi(SEXP matSEXP, SEXP refSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< LogicalMatrix >::type mat(matSEXP);
-    rcpp_result_gen = Rcpp::wrap(motif_census_bidirectional(mat));
+    Rcpp::traits::input_parameter< IntegerMatrix >::type ref(refSEXP);
+    rcpp_result_gen = Rcpp::wrap(motif_census_bi(mat, ref));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_motifscensus_motif_census", (DL_FUNC) &_motifscensus_motif_census, 1},
-    {"_motifscensus_motif_census_bidirectional", (DL_FUNC) &_motifscensus_motif_census_bidirectional, 1},
+    {"_motifcensus_motif_census_uni", (DL_FUNC) &_motifcensus_motif_census_uni, 1},
+    {"_motifcensus_motif_census_bi", (DL_FUNC) &_motifcensus_motif_census_bi, 2},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_motifscensus(DllInfo *dll) {
+RcppExport void R_init_motifcensus(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

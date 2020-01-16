@@ -3,33 +3,8 @@
 using namespace Rcpp;
 
 
-//' @name motif_census
-//'
-//' @title Compute motif census for a directional network.
-//'
-//' @description
-//' Count motifs and positions within motifs for a directional network.
-//'
-//' @param mat a square matrix of logical describing a directional network.
-//'
-//' @export
-//'
-//' @return
-//' A dataframe with species as rows and motifs as columns, motif positions are ordered as follows:
-//'	* 1 linear chains bottom;
-//'	* 2 linear chains middle;
-//'	* 3 linear chains top;
-//'	* 4 apparent competition botton;
-//'	* 5 apparent competition top;
-//'	* 6 exploitative competition bottom;
-//'	* 7 exploitative competition top;
-//'	* 8 omnivory bottom;
-//'	* 9 omnivory middle;
-//'	* 10 omnivory top;
-//'	* 11 circular (e.g. 1->2->3->1).
-
 // [[Rcpp::export]]
-NumericMatrix motif_census(LogicalMatrix mat)
+NumericMatrix motif_census_uni(LogicalMatrix mat)
 {
 
 	if (mat.nrow() != mat.ncol())
@@ -251,22 +226,10 @@ NumericMatrix motif_census(LogicalMatrix mat)
 	return out;
 }
 
-//' @name motif_census_bidirectional
-//'
-//' @title Compute motif census for a bidirectional network.
-//'
-//' @description
-//' Count motifs and positions within motifs for a bidirectional network.
-//'
-//' @param mat a square matrix of logical describing a directional network.
-//'
-//' @references
-//' Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824
-//'
-//' @export
-//'
+
+
 // [[Rcpp::export]]
-NumericMatrix motif_census_bidirectional(LogicalMatrix mat)
+NumericMatrix motif_census_bi(LogicalMatrix mat, IntegerMatrix ref)
 {
 
 	if (mat.nrow() != mat.ncol())
@@ -298,139 +261,12 @@ NumericMatrix motif_census_bidirectional(LogicalMatrix mat)
 				ss += mat(k, i) ? 8 : 0;  // k->i
 				ss += mat(j, k) ? 16 : 0; // j->k
 				ss += mat(k, j) ? 32 : 0; // k->j
-				Rcout << ss << std::endl;
-				// here big swith case here
-				switch (ss)
+				// if first is different of 0
+				if (ref(ss, 0))
 				{
-				// **motif 1** expoitative competition, 3 cases
-				// 2 positions -- bottom (2): 0 and top (1): 1
-				case 5:
-				{
-					out(i, 1)++;
-					out(j, 0)++;
-					out(k, 0)++;
-					break;
-				}
-				case 18:
-				{
-					out(j, 1)++;
-					out(i, 0)++;
-					out(k, 0)++;
-					break;
-				}
-				case 40:
-				{
-					out(k, 1)++;
-					out(i, 0)++;
-					out(j, 0)++;
-					break;
-				}
-				// **motif 2** linear chain, 6 cases
-				// 3 positions -- bottom: 2, middle: 3 and top: 4
-				case 6: // j->i->k
-				{
-					out(i, 3)++;
-					out(j, 2)++;
-					out(k, 4)++;
-					break;
-				}
-				case 9: // k->i->j
-				{
-					out(i, 3)++;
-					out(j, 4)++;
-					out(k, 2)++;
-					break;
-				}
-				case 17: // i->j->k
-				{
-					out(i, 2)++;
-					out(j, 3)++;
-					out(k, 4)++;
-					break;
-				}
-				case 24: // j->k->i
-				{
-					out(i, 4)++;
-					out(j, 2)++;
-					out(k, 3)++;
-					break;
-				}
-				case 34: // k->j->i
-				{
-					out(i, 4)++;
-					out(j, 3)++;
-					out(k, 2)++;
-					break;
-				}
-				case 36: // i->k->j
-				{
-					out(i, 2)++;
-					out(j, 4)++;
-					out(k, 3)++;
-					break;
-				}
-				// **motif 3** A->B->C + B->A, 6 cases
-				// 3 positions -- bottom: 5, middle: 6 and top: 7
-				case 7: // j->i->k + i->j
-				{
-					out(i, 6)++;
-					out(j, 5)++;
-					out(k, 7)++;
-					break;
-				}
-				case 13: // k->i->j + i->k
-				{
-					out(i, 6)++;
-					out(j, 7)++;
-					out(k, 5)++;
-					break;
-				}
-				case 19: // i->j->k + j->i
-				{
-					out(i, 5)++;
-					out(j, 6)++;
-					out(k, 7)++;
-					break;
-				}
-				case 56: // j->k->i + k->j
-				{
-					out(i, 7)++;
-					out(j, 5)++;
-					out(k, 6)++;
-					break;
-				}
-				case 50: // k->j->i + j->k
-				{
-					out(i, 7)++;
-					out(j, 6)++;
-					out(k, 5)++;
-					break;
-				}
-				case 44: // i->k->j + k->i
-				{
-					out(i, 5)++;
-					out(j, 7)++;
-					out(k, 6)++;
-				}
-				// **motif 5** circluar, 2cases
-				// 1 position -- unique 11
-				case 25:
-				case 38:
-				{
-					out(i, 11)++;
-					out(j, 11)++;
-					out(k, 11)++;
-					break;
-				}
-				// **motif 13** fully connected, 1 case
-				// position: 29
-				case 63:
-				{
-					out(i, 29)++;
-					out(j, 29)++;
-					out(k, 29)++;
-					break;
-				}
+					out(i, ref(ss, 0)-1)++;
+					out(j, ref(ss, 1)-1)++;
+					out(k, ref(ss, 2)-1)++;
 				}
 			}
 		}
