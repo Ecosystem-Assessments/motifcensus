@@ -26,7 +26,8 @@ install_github("KevCaz/motifscensus")
 
 ```r
 R> library(motifcensus)
-R> # Networ net: k 4 -> 3 -> 1 & 4 -> 3 -> 1 & 1 <- 3 -> 2
+R> # Network net: 4->3->1 & 4->3->2 & 1<-3->2 ; meaning 2 linear chains 
+R> # (motif 2 in Milo (2002)) and 1 exploitative exploitation (motif 1)
 R> net <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
 net
      [,1] [,2] [,3] [,4]
@@ -40,20 +41,40 @@ $motifs
 1 2 3 4 5 
 2 0 1 0 0 
 
+$motifs_node
+     1 2 3 4 5
+[1,] 1 0 1 0 0
+[2,] 1 0 1 0 0
+[3,] 2 0 1 0 0
+[4,] 2 0 0 0 0
+
 $positions
+ [1] 2 2 2 0 0 1 2 0 0 0 0
+
+$positions_node
      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
 [1,]    0    0    1    0    0    0    1    0    0     0     0
 [2,]    0    0    1    0    0    0    1    0    0     0     0
 [3,]    0    2    0    0    0    1    0    0    0     0     0
 [4,]    2    0    0    0    0    0    0    0    0     0     0
 
-R> # if net is a bidirectional network
-R> motif_census(net) 
+
+R> motif_census(net) # net is treated as bidirectional network
 $motifs
  1  2  3  4  5  6  7  8  9 10 11 12 13 
  1  2  0  0  0  0  0  0  0  0  0  0  0 
 
+$motifs_node
+     1 2 3 4 5 6 7 8 9 10 11 12 13
+[1,] 1 1 0 0 0 0 0 0 0  0  0  0  0
+[2,] 1 1 0 0 0 0 0 0 0  0  0  0  0
+[3,] 1 2 0 0 0 0 0 0 0  0  0  0  0
+[4,] 0 2 0 0 0 0 0 0 0  0  0  0  0
+
 $positions
+ [1] 1 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+$positions_node
      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
 [1,]    0    1    0    0    1    0    0    0    0     0     0
 [2,]    0    1    0    0    1    0    0    0    0     0     0

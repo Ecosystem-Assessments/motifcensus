@@ -15,8 +15,10 @@ Default is set to \code{FALSE} meaning that the network is bidirectional.}
 \value{
 A list of two elements:
 \itemize{
-\item motifs: motif count.
-\item positions: position count.
+\item \code{motifs}: total motif count.
+\item \code{motifs_node}: motif count per node.
+\item \code{positions}: total position count.
+\item \code{positions_node}: position count per nodes
 }
 
 If \code{unidirectional} is \code{TRUE}, then motifs ordered as follows:
@@ -40,11 +42,11 @@ and positions are as follows:
 \item 11 circular (e.g. 1->2->3->1).
 }
 
-If \code{mat} corresponds to a  bidirectional network, then the 13 motifs are
+If \code{mat} corresponds to a bidirectional network, then the 13 motifs are
 ordered following Milo (2002). Positions to be detailed.
 }
 \description{
-Compute 3 species motif census for unidirection and bidirectional
+Compute 3-nodes motif census for unidirection and bidirectional
 unipartite networks.
 }
 \references{

@@ -20,13 +20,13 @@ test_that("expected error", {
 })
 
 
-res_lc <- motif_census(t(mat_lc), unidirectional = TRUE)$positions
-res_lc2 <- motif_census(mat_lc2, unidirectional = TRUE)$positions
-res_ac <- motif_census(mat_ac, unidirectional = TRUE)$positions
-res_ec <- motif_census(mat_ec, unidirectional = TRUE)$positions
-res_om <- motif_census(mat_om, unidirectional = TRUE)$positions
-res_om2 <- motif_census(mat_om2, unidirectional = TRUE)$positions
-res_ci <- motif_census(mat_ci, unidirectional = TRUE)$positions
+res_lc <- motif_census(t(mat_lc), unidirectional = TRUE)$positions_node
+res_lc2 <- motif_census(mat_lc2, unidirectional = TRUE)$positions_node
+res_ac <- motif_census(mat_ac, unidirectional = TRUE)$positions_node
+res_ec <- motif_census(mat_ec, unidirectional = TRUE)$positions_node
+res_om <- motif_census(mat_om, unidirectional = TRUE)$positions_node
+res_om2 <- motif_census(mat_om2, unidirectional = TRUE)$positions_node
+res_ci <- motif_census(mat_ci, unidirectional = TRUE)$positions_node
 res_cb <- motif_census(mat_cb, unidirectional = TRUE)
 
 test_that("position for unidirectional networks", {
@@ -45,15 +45,18 @@ test_that("position for unidirectional networks", {
   expect_equal(sum(res_ci), 3)
   expect_true(all(res_ci[,11] == 1))
 
-  cb_pos <- res_cb$positions
+  cb_pos <- res_cb$positions_node
   expect_equal(sum(cb_pos), 9)
   expect_equal(sum(cb_pos[4,1]), 2)
   expect_equal(sum(cb_pos[3,2]), 2)
   expect_true(cb_pos[1,3] & cb_pos[2,3])
   expect_true(cb_pos[1,7] & cb_pos[2,7] &cb_pos[3,6])
+
+  expect_true(all(res_cb$positions == c(2, 2, 2, 0, 0, 1, 2, 0, 0, 0, 0)))
 })
 
 test_that("motifs for unidirectional networks", {
+  expect_true(all(res_cb$species_motifs[, 1L] == c(1, 1, 2, 2)))
   expect_true(all(res_cb$motifs == c(2, 0, 1, 0, 0))) 
 })
 

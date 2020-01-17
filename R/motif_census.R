@@ -1,6 +1,6 @@
 #' motif_census
 #'
-#' Compute 3 species motif census for unidirection and bidirectional 
+#' Compute 3-nodes motif census for unidirection and bidirectional 
 #' unipartite networks.
 #'
 #' @param mat a square matrix of logical describing a network.
@@ -14,8 +14,10 @@
 #'
 #' @return
 #' A list of two elements: 
-#' * motifs: motif count.
-#' * positions: position count.
+#' * `motifs`: total motif count.
+#' * `motifs_node`: motif count per node.
+#' * `positions`: total position count.
+#' * `positions_node`: position count per nodes
 #' 
 #' If `unidirectional` is `TRUE`, then motifs ordered as follows:
 #'  * 1 linear chains bottom;
@@ -36,18 +38,33 @@
 #'	* 10 omnivory top;
 #'	* 11 circular (e.g. 1->2->3->1).
 #' 
-#' If `mat` corresponds to a  bidirectional network, then the 13 motifs are 
+#' If `mat` corresponds to a bidirectional network, then the 13 motifs are 
 #' ordered following Milo (2002). Positions to be detailed. 
 
 
 motif_census <- function(mat, unidirectional = FALSE) {
     if (unidirectional) {
         pos <- motif_census_uni(mat)
-        pos2mot <- rep(1:5, c(3, 2, 2, 3, 1))
+        pos2mot <- rep(seq_len(5), c(3, 2, 2, 3, 1))
     } else {
         pos <- motif_census_bi(mat, motifcensus::positions_motif3)
-        pos2mot <- rep(1:13, c(2, 3, 3, 2, 3, 2, 3, 2, 1, 3, 2, 3, 1))
+        pos2mot <- rep(seq_len(13), c(2, 3, 3, 2, 3, 2, 3, 2, 1, 3, 2, 3, 1))
     }
-    mot <- unlist(lapply(split(t(pos), pos2mot), function(x) sum(x)/3))
-    list(motifs = mot, positions = pos)
+    tmp_mot <- split(t(pos), pos2mot)
+    mot <- unlist(lapply(tmp_mot, function(x) sum(x)/3))
+    motsp <- motifs_node(tmp_mot, nrow(mat))
+    list(
+        motifs = mot, 
+        motifs_node = motsp, 
+        positions = apply(pos, 2, sum),
+        positions_node = pos
+    )
 }
+
+
+ motifs_node <- function(x, nsp) {
+    t(do.call(rbind, 
+        lapply(x, function(y) apply(matrix(y, ncol = nsp), 2, sum))
+    ))
+}
+
