@@ -2,14 +2,16 @@
 [![Actions Status](https://github.com/KevCaz/motifscensus/workflows/Check%20Package/badge.svg)](https://github.com/KevCaz/motifscensus/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
+
 ## :question: Description
 
-So far, this package only includes `motif_census()`, a function that
-counts the different positions occupied by the different species in all the **3
-species motifs** of a given **unipartite network**.
+So far, this package includes `motif_census()`, a function that counts the
+different positions occupied by the different species in all the **3 species
+motifs** of a given **unipartite network**. Also `motif_census_triplet()` return
+detail for all triplets.
 
 Note that `count_motif()` in [`igraph`](https://igraph.org/r/) counts motifs of
-size 3 and 4 of different kind networks, but does not accounts for the different
+size 3 and 4 of different kind networks, but does not account for the different
 positions occupied within a motif.
 
 
@@ -91,12 +93,14 @@ $positions_node
 [3,]     0     0     0     0     0     0     0     0     0
 [4,]     0     0     0     0     0     0     0     0     0
 
-```
+R> motif_census_triplet(net)
+   n i j k i_to_j j_to_i i_to_k k_to_i j_to_k k_to_j pos_i pos_j pos_k sum_pos                 motif                 name_uni
+1  0 0 1 3  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i   j + i   k + j   k                         
+2 34 0 2 3  FALSE   TRUE  FALSE  FALSE  FALSE   TRUE     5     4     3      12 i<--j + i   k + j<--k             linear chain
+3 34 1 2 3  FALSE   TRUE  FALSE  FALSE  FALSE   TRUE     5     4     3      12 i<--j + i   k + j<--k             linear chain
+4 40 0 1 2  FALSE  FALSE  FALSE   TRUE  FALSE   TRUE     2     2     1       5 i   j + i<--k + j<--k exploitative competition
 
 
-# Table64
-
-```R
 R> head(table64)
   n i_to_j j_to_i i_to_k k_to_i j_to_k k_to_j pos_i pos_j pos_k sum_pos                 motif                 name_uni
 1 0  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i   j + i   k + j   k                         

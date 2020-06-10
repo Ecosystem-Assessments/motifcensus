@@ -265,3 +265,50 @@ NumericMatrix motif_census_bi(LogicalMatrix mat, IntegerMatrix ref)
 	}
 	return out;
 }
+
+
+
+// [[Rcpp::export]]
+NumericMatrix motif_census_all_triplets(LogicalMatrix mat, int nrow)
+{
+
+		if (mat.nrow() != mat.ncol())
+		{ // log() not defined here
+				stop("`mat` is not square");
+		}
+
+		NumericMatrix out(nrow, 4);
+		// NB: ordered following the 13 motifs described in Milo (2002)
+		int j, k, i, r, s, ss;
+		int nsp = mat.nrow();
+
+		// REMOVE cannibalism
+		for (i = 0; i < mat.nrow(); i++)
+				mat(i, i) = false;
+
+		// count motifs
+		r = 0;
+		for (i = 0; i < nsp - 2; i++)
+		{
+				for (j = i + 1; j < nsp - 1; j++)
+				{
+						s = mat(i, j) ? 1 : 0; // i->j
+						s += mat(j, i) ? 2 : 0; // j->i
+						for (k = j + 1; k < nsp; k++)
+						{
+								ss = s;
+								ss += mat(i, k) ? 4 : 0; // i->k
+								ss += mat(k, i) ? 8 : 0; // k->i
+								ss += mat(j, k) ? 16 : 0; // j->k
+								ss += mat(k, j) ? 32 : 0; // k->j
+								// edit out
+								out(r, 0) = i;
+								out(r, 1) = j;
+								out(r, 2) = k;
+								out(r, 3) = ss;
+								r++;
+						}
+				}
+		}
+		return out;
+}

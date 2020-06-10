@@ -2,9 +2,12 @@
 % Please edit documentation in R/motif_census.R, R/zzz.R
 \name{motif_census}
 \alias{motif_census}
+\alias{motif_census_triplet}
 \title{motif_census}
 \usage{
 motif_census(mat, unidirectional = FALSE)
+
+motif_census_triplet(mat)
 }
 \arguments{
 \item{mat}{a square matrix of logical describing a network.}
@@ -48,6 +51,16 @@ ordered following Milo (2002). Positions to be detailed.
 \description{
 Compute 3-nodes motif census for unidirection and bidirectional
 unipartite networks.
+}
+\section{Functions}{
+\itemize{
+\item \code{motif_census_triplet}: return details for all motifs
+}}
+
+\examples{
+net <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
+motif_census(net, unidirectional = TRUE)
+motif_census_triplet(net)
 }
 \references{
 Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824

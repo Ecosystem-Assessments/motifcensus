@@ -28,10 +28,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// motif_census_all_triplets
+NumericMatrix motif_census_all_triplets(LogicalMatrix mat, int nrow);
+RcppExport SEXP _motifcensus_motif_census_all_triplets(SEXP matSEXP, SEXP nrowSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< LogicalMatrix >::type mat(matSEXP);
+    Rcpp::traits::input_parameter< int >::type nrow(nrowSEXP);
+    rcpp_result_gen = Rcpp::wrap(motif_census_all_triplets(mat, nrow));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_motifcensus_motif_census_uni", (DL_FUNC) &_motifcensus_motif_census_uni, 1},
     {"_motifcensus_motif_census_bi", (DL_FUNC) &_motifcensus_motif_census_bi, 2},
+    {"_motifcensus_motif_census_all_triplets", (DL_FUNC) &_motifcensus_motif_census_all_triplets, 2},
     {NULL, NULL, 0}
 };
 
