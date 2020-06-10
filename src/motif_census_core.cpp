@@ -2,7 +2,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-
 // [[Rcpp::export]]
 NumericMatrix motif_census_uni(LogicalMatrix mat)
 {

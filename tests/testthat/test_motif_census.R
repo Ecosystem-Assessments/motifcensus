@@ -1,21 +1,20 @@
-
 # linear chain 
 mat_lc <- rbind(c(0,1,0), c(0,0,1), c(0,0,0))
 mat_lc2 <- rbind(c(0,1,0), c(0,0,0), c(1,0,0))
 # apparent competition
 mat_ac <- rbind(c(0,0,0), c(1,0,0), c(1,0,0))
-# exploitative competition 
+# exploitative competition
 mat_ec <- rbind(c(0,0,0), c(0,0,0), c(1,1,0))
-# omnivory 
+# omnivory
 mat_om <- rbind(c(0,0,0), c(1,0,0), c(1,1,0))
 mat_om2 <- rbind(c(0,1,1), c(0,0,1), c(0,0,0))
 # circular
 mat_ci <- rbind(c(0,0,1), c(1,0,0), c(0,1,0))
-# 2 linear chain and one exploitative 
+# 2 linear chain and one exploitative
 mat_cb <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
 
 test_that("expected error", {
-  expect_error(motif_census(mat_lc[,-1], unidirectional = TRUE), 
+  expect_error(motif_census(mat_lc[,-1], unidirectional = TRUE),
     "`mat` is not square", fixed = TRUE)
 })
 
@@ -57,10 +56,10 @@ test_that("position for unidirectional networks", {
 
 test_that("motifs for unidirectional networks", {
   expect_true(all(res_cb$species_motifs[, 1L] == c(1, 1, 2, 2)))
-  expect_true(all(res_cb$motifs == c(2, 0, 1, 0, 0))) 
+  expect_true(all(res_cb$motifs == c(2, 0, 1, 0, 0)))
 })
 
 
 test_that("positions for bidirectional networks", {
-  expect_identical(motif_census(mat_ci), motif_census(t(mat_ci))) 
+  expect_identical(motif_census(mat_ci), motif_census(t(mat_ci)))
 })

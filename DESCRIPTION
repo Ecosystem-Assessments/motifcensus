@@ -2,13 +2,13 @@ Package: motifcensus
 Type: Package
 Title: Count 3-nodes motifs for unipartite networks
 Version: 0.0.1.9000
-Date: 2020-01-16
+Date: 2020-06-04
 Authors@R: c(
   person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre"))
   )
 Description: Count 3-nodes motifs and positions for unipartite networks.
 URL: https://github.com/KevCaz/motifcensus/
-Imports: 
+Imports:
   Rcpp (>= 1.0.3),
   utils
 LinkingTo: Rcpp
@@ -22,5 +22,5 @@ Encoding: UTF-8
 VignetteBuilder: knitr
 License: GPL (>= 2)
 BugReports: https://github.com/KevCaz/motifcensus/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)

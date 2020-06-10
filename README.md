@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/KevCaz/motifscensus/workflows/Check%20Package/badge.svg)](https://github.com/KevCaz/motifscensus/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-## :question: Description 
+## :question: Description
 
 So far, this package only includes `motif_census()`, a function that
 counts the different positions occupied by the different species in all the **3
@@ -26,7 +26,7 @@ install_github("KevCaz/motifscensus")
 
 ```r
 R> library(motifcensus)
-R> # Network net: 4->3->1 & 4->3->2 & 1<-3->2 ; meaning 2 linear chains 
+R> # Network net: 4->3->1 & 4->3->2 & 1<-3->2 ; meaning 2 linear chains
 R> # (motif 2 in Milo (2002)) and 1 exploitative exploitation (motif 1)
 R> net <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
 net
@@ -36,10 +36,10 @@ net
 [3,]    1    1    0    0
 [4,]    0    0    1    0
 
-R> motif_census(net, unidirectional = TRUE) 
+R> motif_census(net, unidirectional = TRUE)
 $motifs
-1 2 3 4 5 
-2 0 1 0 0 
+1 2 3 4 5
+2 0 1 0 0
 
 $motifs_node
      1 2 3 4 5
@@ -61,8 +61,8 @@ $positions_node
 
 R> motif_census(net) # net is treated as bidirectional network
 $motifs
- 1  2  3  4  5  6  7  8  9 10 11 12 13 
- 1  2  0  0  0  0  0  0  0  0  0  0  0 
+ 1  2  3  4  5  6  7  8  9 10 11 12 13
+ 1  2  0  0  0  0  0  0  0  0  0  0  0
 
 $motifs_node
      1 2 3 4 5 6 7 8 9 10 11 12 13
@@ -90,5 +90,20 @@ $positions_node
 [2,]     0     0     0     0     0     0     0     0     0
 [3,]     0     0     0     0     0     0     0     0     0
 [4,]     0     0     0     0     0     0     0     0     0
+
+```
+
+
+# Table64
+
+```R
+R> head(table64)
+  n i_to_j j_to_i i_to_k k_to_i j_to_k k_to_j pos_i pos_j pos_k sum_pos                 motif                 name_uni
+1 0  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i   j + i   k + j   k                         
+2 1   TRUE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i-->j + i   k + j   k                         
+3 2  FALSE   TRUE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i<--j + i   k + j   k                         
+4 3   TRUE   TRUE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i<->j + i   k + j   k                         
+5 4  FALSE  FALSE   TRUE  FALSE  FALSE  FALSE     0     0     0       0 i   j + i-->k + j   k                         
+6 5   TRUE  FALSE   TRUE  FALSE  FALSE  FALSE     1     2     2       5 i-->j + i-->k + j   k exploitative competition
 
 ```

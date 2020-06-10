@@ -4,11 +4,14 @@
 \name{positions_motif3}
 \alias{positions_motif3}
 \title{potisions_motifs}
-\format{a matrix of 64 rows and 3 columns}
+\format{
+a matrix of 64 rows and 3 columns
+}
 \usage{
 positions_motif3
 }
 \description{
-Table giveing the motifs positions associated with all the 64 combinations #' of interactions for 3 species motifs.
+Table giving the motifs positions associated with all the 64 combinations
+of interactions for 3 species motifs.
 }
 \keyword{datasets}
