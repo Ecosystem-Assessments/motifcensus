@@ -4,7 +4,8 @@ Title: Count 3-nodes motifs for unipartite networks
 Version: 0.0.2.9000
 Date: 2020-06-04
 Authors@R: c(
-  person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre"))
+  person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre")),
+  person("David", "Beauchesne", email = "david.beauchesne@uqar.ca", comment = c(ORCID = "0000-0002-3590-8161"), role = c("aut"))
   )
 Description: Count 3-nodes motifs and positions for unipartite networks.
 URL: https://github.com/KevCaz/motifcensus/
