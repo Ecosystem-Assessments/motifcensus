@@ -1,28 +1,29 @@
-# Motif census
-[![Actions Status](https://github.com/KevCaz/motifscensus/workflows/Check%20Package/badge.svg)](https://github.com/KevCaz/motifscensus/actions)
+# motifcensus
+
+> Count 3-nodes motifs and positions for unipartite networks.
+
+[![R CMD Check](https://github.com/Ecosystem-Assessments/motifcensus/actions/workflows/main.yml/badge.svg)](https://github.com/Ecosystem-Assessments/motifcensus/actions/workflows/main.yml)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 
-## :question: Description
+## Description
 
 So far, this package includes `motif_census()`, a function that counts the
 different positions occupied by the different species in all the **3 species
-motifs** of a given **unipartite network**. Also `motif_census_triplet()` return
-detail for all triplets.
+motifs** of a given **unipartite network**. Also, `motif_census_triplet()` return
+details for all triplets.
 
 Note that `count_motif()` in [`igraph`](https://igraph.org/r/) counts motifs of
 size 3 and 4 of different kind networks, but does not account for the different
 positions occupied within a motif.
 
 
-
 ## Installation
 
 ```r
 install.packages("remotes")
-install_github("KevCaz/motifscensus")
+install_github("Ecosystem-Assessments/motifscensus")
 ```
-
 
 ## Example
 
@@ -109,5 +110,4 @@ R> head(table64)
 4 3   TRUE   TRUE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i<->j + i   k + j   k                         
 5 4  FALSE  FALSE   TRUE  FALSE  FALSE  FALSE     0     0     0       0 i   j + i-->k + j   k                         
 6 5   TRUE  FALSE   TRUE  FALSE  FALSE  FALSE     1     2     2       5 i-->j + i-->k + j   k exploitative competition
-
 ```
