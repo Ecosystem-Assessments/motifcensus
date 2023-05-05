@@ -4,8 +4,6 @@
 #' @name motif_census
 NULL
 
-
-
 # Code used to generate table64
 
 gen_table64 <- function() {
@@ -43,7 +41,6 @@ gen_table64 <- function() {
    out$name_uni[out$sum_pos == 12] <- "linear chain"
    out$name_uni[out$sum_pos == 28] <- "apparent competition"
    out$name_uni[out$sum_pos == 36] <- "omnivory"
-
 
    out
 }

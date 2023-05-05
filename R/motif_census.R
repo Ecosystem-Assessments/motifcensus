@@ -1,14 +1,14 @@
-#' motif_census
+#' Compute 3-nodes motif census 
 #'
 #' Compute 3-nodes motif census for unidirection and bidirectional
 #' unipartite networks.
 #'
 #' @param mat a square matrix of logical describing a network.
-#' @param unidirectional a logical. Is the network considered unidirectional.
+#' @param unidirectional a logical. Is the network considered unidirectional?
 #' Default is set to `FALSE` meaning that the network is bidirectional.
 #'
 #' @references
-#' Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824
+#' * Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824
 #'
 #' @export
 #'
@@ -65,13 +65,11 @@ motif_census <- function(mat, unidirectional = FALSE) {
 }
 
 
-
 motifs_node <- function(x, nsp) {
     t(do.call(rbind,
         lapply(x, function(y) apply(matrix(y, ncol = nsp), 2, sum))
     ))
 }
-
 
 #' @export
 #' @describeIn motif_census return details for all motifs
