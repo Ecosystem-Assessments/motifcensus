@@ -3,7 +3,7 @@
 \name{motif_census}
 \alias{motif_census}
 \alias{motif_census_triplet}
-\title{motif_census}
+\title{Compute 3-nodes motif census}
 \usage{
 motif_census(mat, unidirectional = FALSE)
 
@@ -12,7 +12,7 @@ motif_census_triplet(mat)
 \arguments{
 \item{mat}{a square matrix of logical describing a network.}
 
-\item{unidirectional}{a logical. Is the network considered unidirectional.
+\item{unidirectional}{a logical. Is the network considered unidirectional?
 Default is set to \code{FALSE} meaning that the network is bidirectional.}
 }
 \value{
@@ -54,14 +54,16 @@ unipartite networks.
 }
 \section{Functions}{
 \itemize{
-\item \code{motif_census_triplet}: return details for all motifs
-}}
+\item \code{motif_census_triplet()}: return details for all motifs
 
+}}
 \examples{
 net <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
 motif_census(net, unidirectional = TRUE)
 motif_census_triplet(net)
 }
 \references{
-Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824
+\itemize{
+\item Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824
+}
 }
