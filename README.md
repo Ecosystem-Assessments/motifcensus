@@ -102,12 +102,13 @@ R> motif_census_triplet(net)
 4 40 0 1 2  FALSE  FALSE  FALSE   TRUE  FALSE   TRUE     2     2     1       5 i   j + i<--k + j<--k exploitative competition
 
 
-R> head(table64)
-  n i_to_j j_to_i i_to_k k_to_i j_to_k k_to_j pos_i pos_j pos_k sum_pos                 motif                 name_uni
-1 0  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i   j + i   k + j   k                         
-2 1   TRUE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i-->j + i   k + j   k                         
-3 2  FALSE   TRUE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i<--j + i   k + j   k                         
-4 3   TRUE   TRUE  FALSE  FALSE  FALSE  FALSE     0     0     0       0 i<->j + i   k + j   k                         
-5 4  FALSE  FALSE   TRUE  FALSE  FALSE  FALSE     0     0     0       0 i   j + i-->k + j   k                         
-6 5   TRUE  FALSE   TRUE  FALSE  FALSE  FALSE     1     2     2       5 i-->j + i-->k + j   k exploitative competition
+R> head(bidirectional_motifs3)
+  mid i_to_j j_to_i i_to_k k_to_i j_to_k k_to_j pid_i pid_j pid_k psum                 motif                 name_uni
+1   0  FALSE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0    0 i   j + i   k + j   k                         
+2   1   TRUE  FALSE  FALSE  FALSE  FALSE  FALSE     0     0     0    0 i-->j + i   k + j   k                         
+3   2  FALSE   TRUE  FALSE  FALSE  FALSE  FALSE     0     0     0    0 i<--j + i   k + j   k                         
+4   3   TRUE   TRUE  FALSE  FALSE  FALSE  FALSE     0     0     0    0 i<->j + i   k + j   k                         
+5   4  FALSE  FALSE   TRUE  FALSE  FALSE  FALSE     0     0     0    0 i   j + i-->k + j   k                         
+6   5   TRUE  FALSE   TRUE  FALSE  FALSE  FALSE     1     2     2    5 i-->j + i-->k + j   k exploitative competition
+
 ```

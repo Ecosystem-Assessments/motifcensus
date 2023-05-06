@@ -1,7 +1,7 @@
 Package: motifcensus
 Type: Package
 Title: Count 3-nodes motifs for unipartite networks
-Version: 0.1.0
+Version: 0.1.0.9000
 Date: 2023-05-05
 Authors@R: c(
   person("Kevin", "Cazelles", email = "kcazelle@uoguelph.ca", comment = c(ORCID = "0000-0001-6619-9874"), role = c("aut", "cre")),

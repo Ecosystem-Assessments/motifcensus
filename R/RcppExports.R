@@ -9,7 +9,7 @@ motif_census_bi <- function(mat, ref) {
     .Call('_motifcensus_motif_census_bi', PACKAGE = 'motifcensus', mat, ref)
 }
 
-motif_census_all_triplets <- function(mat, nrow) {
-    .Call('_motifcensus_motif_census_all_triplets', PACKAGE = 'motifcensus', mat, nrow)
+motif_census_all_triplets <- function(mat) {
+    .Call('_motifcensus_motif_census_all_triplets', PACKAGE = 'motifcensus', mat)
 }
 
