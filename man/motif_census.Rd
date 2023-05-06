@@ -27,6 +27,7 @@ A list of two elements:
 If \code{unidirectional} is \code{TRUE}, then motifs ordered as follows:
 \itemize{
 \item 1 linear chains bottom;
+\itemize{
 \item 2 apparent competition;
 \item 3 exploitative competition;
 \item 4 omnivory;
@@ -44,9 +45,11 @@ and positions are as follows:
 \item 10 omnivory top;
 \item 11 circular (e.g. 1->2->3->1).
 }
+}
 
 If \code{mat} corresponds to a bidirectional network, then the 13 motifs are
-ordered following Milo (2002). Positions to be detailed.
+ordered following Milo (2002), see the documentation of
+\link{bidirectional_motifs3} for more details.
 }
 \description{
 Compute 3-nodes motif census for unidirection and bidirectional
@@ -58,12 +61,14 @@ unipartite networks.
 
 }}
 \examples{
-net <- rbind(c(0,0,0,0), c(0,0,0,0), c(1,1,0,0), c(0,0,1,0))
+net <- rbind(c(0, 0, 0, 0), c(0, 0, 0, 0), c(1, 1, 0, 0), c(0, 0, 1, 0))
 motif_census(net, unidirectional = TRUE)
 motif_census_triplet(net)
 }
 \references{
 \itemize{
-\item Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.5594.824
+\item Milo, R. (2002). Network Motifs: Simple Building Blocks of Complex
+Networks. Science, 298(5594), 824–827. https://doi.org/10.1126/science.298.
+5594.824
 }
 }

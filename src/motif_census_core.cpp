@@ -269,7 +269,7 @@ NumericMatrix motif_census_bi(LogicalMatrix mat, IntegerMatrix ref)
 
 
 // [[Rcpp::export]]
-NumericMatrix motif_census_all_triplets(LogicalMatrix mat, int nrow)
+NumericMatrix motif_census_all_triplets(LogicalMatrix mat)
 {
 
 		if (mat.nrow() != mat.ncol())
@@ -277,7 +277,7 @@ NumericMatrix motif_census_all_triplets(LogicalMatrix mat, int nrow)
 				stop("`mat` is not square");
 		}
 
-		NumericMatrix out(nrow, 4);
+		NumericMatrix out(Rf_choose(mat.nrow(), 3), 4);
 		// NB: ordered following the 13 motifs described in Milo (2002)
 		int j, k, i, r, s, ss;
 		int nsp = mat.nrow();
